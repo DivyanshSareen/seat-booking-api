@@ -779,6 +779,23 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
+"@prisma/client@4.16.0-integration-studio-direct-url.6":
+  version "4.16.0-integration-studio-direct-url.6"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.16.0-integration-studio-direct-url.6.tgz#1d0ab78eb9383ecc11cd7b72a5ff6c25fd1435f3"
+  integrity sha512-TjumtPCSqkBbTXEzficVl+Hb8ohsVDfzA6GiuK/vNAZl4pEONdsp6V/EwNSMLZEx4uoEDacUNwEi6M1Zt45PGQ==
+  dependencies:
+    "@prisma/engines-version" "4.16.0-9.69332b98051bd3f8c816b98b83a82e1ede1dbc2b"
+
+"@prisma/engines-version@4.16.0-9.69332b98051bd3f8c816b98b83a82e1ede1dbc2b":
+  version "4.16.0-9.69332b98051bd3f8c816b98b83a82e1ede1dbc2b"
+  resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-4.16.0-9.69332b98051bd3f8c816b98b83a82e1ede1dbc2b.tgz#e0f74803b72225906620b65eee00c081d189dce3"
+  integrity sha512-fTem+Mu8b1IEwUeoQ02wvuOQajMXVbX6+YWaEdmHqhs6Skb3A1suFf92UOOxaNEYoAoJBlvo86rgZRawTItvmw==
+
+"@prisma/engines@4.16.0-integration-studio-direct-url.6":
+  version "4.16.0-integration-studio-direct-url.6"
+  resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-4.16.0-integration-studio-direct-url.6.tgz#971dd6e4117fc4fc99d4a8e6e0604618faddef93"
+  integrity sha512-R7sCo/2NR97EUbhHvCennZyrrt8RDcrXsZiMouin/Kt9S/0tBvLzUcDkIEkfgyszqRsgMcIwROFOqQIN6FxEUg==
+
 "@sinclair/typebox@^0.25.16":
   version "0.25.24"
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.25.24.tgz#8c7688559979f7079aacaf31aa881c3aa410b718"
@@ -3817,6 +3834,13 @@ pretty-format@^29.0.0, pretty-format@^29.5.0:
     "@jest/schemas" "^29.4.3"
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
+
+prisma@^4.16.0-integration-studio-direct-url.6:
+  version "4.16.0-integration-studio-direct-url.6"
+  resolved "https://registry.yarnpkg.com/prisma/-/prisma-4.16.0-integration-studio-direct-url.6.tgz#639c4a543d8b61d49906f53043ff15e20f54f4cd"
+  integrity sha512-nbep1aW+YseM0EGehtr+yfVFdelS//JDdgd7O5s7l2EwMOYFOgF8/DNsbTv9ePpybD9mntH3rW/Hoz1HfnoQ4g==
+  dependencies:
+    "@prisma/engines" "4.16.0-integration-studio-direct-url.6"
 
 process-nextick-args@~2.0.0:
   version "2.0.1"

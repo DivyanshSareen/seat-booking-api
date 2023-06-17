@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Seat {
+  id Int @id @default(autoincrement())
+  seat_number String @unique
+  isBooked Boolean
+  pricing Pricing @relation(fields: [prcingId], references: [id])
+  prcingId Int
+  booking Booking? @relation(fields: [bookingId], references: [id])
+  bookingId Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Pricing {
+  id         Int        @id @default(autoincrement())
+  pricing_class String @unique
+  seats Seat[]
+  min_pricing BigInt? 
+  normal_pricing BigInt?
+  max_prcing BigInt?
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model Booking {
+  id         Int        @id @default(autoincrement())
+  name String
+  email String
+  phone String
+  booking_amount BigInt
+  seats Seat[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
