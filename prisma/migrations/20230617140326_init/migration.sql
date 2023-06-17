@@ -2,10 +2,9 @@
 CREATE TABLE "Seat" (
     "id" SERIAL NOT NULL,
     "seat_number" TEXT NOT NULL,
-    "seat_class" TEXT NOT NULL,
     "isBooked" BOOLEAN NOT NULL,
     "prcingId" INTEGER NOT NULL,
-    "bookingId" INTEGER NOT NULL,
+    "bookingId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -16,9 +15,9 @@ CREATE TABLE "Seat" (
 CREATE TABLE "Pricing" (
     "id" SERIAL NOT NULL,
     "pricing_class" TEXT NOT NULL,
-    "min_pricing" BIGINT NOT NULL,
-    "normal_pricing" BIGINT NOT NULL,
-    "max_prcing" BIGINT NOT NULL,
+    "min_pricing" DECIMAL(12,2) NOT NULL,
+    "normal_pricing" DECIMAL(12,2) NOT NULL,
+    "max_prcing" DECIMAL(12,2) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -48,4 +47,4 @@ CREATE UNIQUE INDEX "Pricing_pricing_class_key" ON "Pricing"("pricing_class");
 ALTER TABLE "Seat" ADD CONSTRAINT "Seat_prcingId_fkey" FOREIGN KEY ("prcingId") REFERENCES "Pricing"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Seat" ADD CONSTRAINT "Seat_bookingId_fkey" FOREIGN KEY ("bookingId") REFERENCES "Booking"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Seat" ADD CONSTRAINT "Seat_bookingId_fkey" FOREIGN KEY ("bookingId") REFERENCES "Booking"("id") ON DELETE SET NULL ON UPDATE CASCADE;

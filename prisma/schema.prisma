@@ -13,9 +13,9 @@ datasource db {
 model Seat {
   id Int @id @default(autoincrement())
   seat_number String @unique
-  isBooked Boolean
-  pricing Pricing @relation(fields: [prcingId], references: [id])
-  prcingId Int
+  isBooked Boolean @default(false)
+  pricing Pricing @relation(fields: [pricingId], references: [id])
+  pricingId Int
   booking Booking? @relation(fields: [bookingId], references: [id])
   bookingId Int?
   createdAt DateTime @default(now())
@@ -26,9 +26,9 @@ model Pricing {
   id         Int        @id @default(autoincrement())
   pricing_class String @unique
   seats Seat[]
-  min_pricing BigInt? 
-  normal_pricing BigInt?
-  max_prcing BigInt?
+  min_pricing Decimal? @db.Decimal(12,2)
+  normal_pricing Decimal? @db.Decimal(12,2)
+  max_pricing Decimal? @db.Decimal(12,2)
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
 }
