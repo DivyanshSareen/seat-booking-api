@@ -5,9 +5,16 @@ import { SeatModule } from './seat/seat.module';
 import { PricingModule } from './pricing/pricing.module';
 import { BookingModule } from './booking/booking.module';
 import { HelperModule } from './helper/helper.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [SeatModule, PricingModule, BookingModule, HelperModule],
+  imports: [
+    SeatModule,
+    PricingModule,
+    BookingModule,
+    HelperModule,
+    PrismaModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
