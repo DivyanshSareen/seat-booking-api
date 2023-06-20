@@ -13,7 +13,6 @@ datasource db {
 model Seat {
   id Int @id @default(autoincrement())
   seat_number String @unique
-  isBooked Boolean @default(false)
   pricing Pricing @relation(fields: [pricingId], references: [id])
   pricingId Int
   booking Booking? @relation(fields: [bookingId], references: [id])
@@ -36,8 +35,8 @@ model Pricing {
 model Booking {
   id         Int        @id @default(autoincrement())
   name String 
-  email String @unique
-  phone String @unique
+  email String 
+  phone String 
   booking_amount Decimal @db.Decimal(12,2)
   seats Seat[]
   createdAt  DateTime   @default(now())

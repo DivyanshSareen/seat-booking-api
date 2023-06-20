@@ -9,8 +9,20 @@ export class SeatService {
     private readonly helper: HelperService,
   ) {}
   async getSeats() {
-    return await this.prisma.seat.findMany({
-      select: { seat_number: true, isBooked: true },
+    const seat_details = await this.prisma.seat.findMany({
+      select: { seat_number: true, bookingId: true, pricing: true },
+      orderBy: {
+        pricing: {
+          pricing_class: 'asc',
+        },
+      },
+    });
+    return seat_details.map((seat) => {
+      return {
+        seat_number: seat.seat_number,
+        isBooked: !!seat.bookingId,
+        pricing_class: seat.pricing.pricing_class,
+      };
     });
   }
 
@@ -31,6 +43,11 @@ export class SeatService {
       normal_price: seat_details.pricing.normal_pricing,
       max_price: seat_details.pricing.max_pricing,
     });
-    return { ...seat_details, seat_pricing: seat_pricing };
+    return {
+      seat_number: seat_details.seat_number,
+      seat_pricing: seat_pricing,
+      seat_class: seat_details.pricing.pricing_class,
+      isBooked: !!seat_details.bookingId,
+    };
   }
 }

@@ -120,7 +120,9 @@ export class HelperService {
     const no_of_booked_seats = await this.prisma.seat.count({
       where: {
         pricingId: seat_pricing_id,
-        isBooked: true,
+        bookingId: {
+          not: null,
+        },
       },
     });
     const percent_booked = (no_of_booked_seats / no_of_seats) * 100;
