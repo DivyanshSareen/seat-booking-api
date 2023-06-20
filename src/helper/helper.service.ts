@@ -2,12 +2,11 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 import { parse } from 'csv-parse';
-import { PrismaClient, Prisma } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class HelperService {
+  constructor(private prisma: PrismaService) {}
   async pricingUpload() {
     const csvFilePath = path.resolve(
       '/home/divyansh/seat-booking-api/src/helper/pricing.csv',
@@ -54,7 +53,7 @@ export class HelperService {
                 .filter((e) => e !== '$')
                 .join('') || null,
           };
-          const createUser = await prisma.pricing.create({ data: rec });
+          const createUser = await this.prisma.pricing.create({ data: rec });
         }
       },
     );
@@ -99,11 +98,39 @@ export class HelperService {
             seat_number: x.seat_identifier,
             pricingId: hmap[x.seat_class],
           };
-          const createUser = await prisma.seat.create({ data: rec });
+          const createUser = await this.prisma.seat.create({ data: rec });
         }
       },
     );
 
     return fileContent;
+  }
+
+  async getSeatPricing({
+    seat_pricing_id,
+    min_price,
+    normal_price,
+    max_price,
+  }) {
+    const no_of_seats = await this.prisma.seat.count({
+      where: {
+        pricingId: seat_pricing_id,
+      },
+    });
+    const no_of_booked_seats = await this.prisma.seat.count({
+      where: {
+        pricingId: seat_pricing_id,
+        isBooked: true,
+      },
+    });
+    const percent_booked = (no_of_booked_seats / no_of_seats) * 100;
+
+    if (percent_booked < 40) {
+      return min_price || normal_price;
+    } else if (percent_booked < 60) {
+      return normal_price || max_price;
+    } else {
+      return max_price || normal_price;
+    }
   }
 }
