@@ -13,7 +13,7 @@ Generic API for seat a booking system with functionalities like
 4. Make a get request to `http://localhost:8080/helper/upload/pricing` to upload Pricing data
 5. Make a get request to `http://localhost:8080/helper/upload/seat` to upload Seat data
 6. Postman collection to play with the API(calls for step 4 and 5 present as well)
-   [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/16401766-2359a965-cac6-4655-a26f-14e726bfaebd?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D16401766-2359a965-cac6-4655-a26f-14e726bfaebd%26entityType%3Dcollection%26workspaceId%3Dfe089a7a-3409-4a2a-95c8-06918729b0c6#?env%5BSeat%20Booking%5D=W3sia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwic2Vzc2lvbkluZGV4IjowfV0=)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/16401766-2359a965-cac6-4655-a26f-14e726bfaebd?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D16401766-2359a965-cac6-4655-a26f-14e726bfaebd%26entityType%3Dcollection%26workspaceId%3Dfe089a7a-3409-4a2a-95c8-06918729b0c6)
 
 ### Seat Pricing Logic
 ● Less than 40% of seats booked - use the min_price, if min_price is not
