@@ -1,73 +1,43 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 💺Seat Booking API
+Generic API for seat a booking system with functionalities like
+- Creating pricing classes 💵
+- Creating seats with those pricing classes 🪑
+- And making bookings on those seats 📅
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+#### Technologies Used: NestJS | Prisma | Docker | PostgreSQL
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Project Setup
+1. Clone the repo `git clone https://github.com/DivyanshSareen/seat-booking-api.git`
+2. Run docker command `docker compose up` in the root directory of the project
+3. You can add some mock values using the next two steps(optional)
+4. Make a get request to `http://localhost:8080/helper/upload/pricing` to upload Pricing data
+5. Make a get request to `http://localhost:8080/helper/upload/seat` to upload Seat data
+6. Postman collection to play with the API(calls for step 4 and 5 present as well)
+   [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/16401766-2359a965-cac6-4655-a26f-14e726bfaebd?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D16401766-2359a965-cac6-4655-a26f-14e726bfaebd%26entityType%3Dcollection%26workspaceId%3Dfe089a7a-3409-4a2a-95c8-06918729b0c6#?env%5BSeat%20Booking%5D=W3sia2V5IjoiYmFzZV91cmwiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwIiwic2Vzc2lvbkluZGV4IjowfV0=)
 
-## Description
+### Seat Pricing Logic
+● Less than 40% of seats booked - use the min_price, if min_price is not
+available, use normal_price
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+● 40% - 60% of seats booked - use the normal_price, if normal_price not
+available, use max_price
 
-## Installation
+● More than 60% of seats booked - use the max_price, if max_price is not
+available, use normal_price
 
-```bash
-$ yarn install
-```
+### Routes
 
-## Running the app
+**Get All Seats**: GET `/seats`
 
-```bash
-# development
-$ yarn run start
+**Get Seat pricing**: GET `/seats/id`
 
-# watch mode
-$ yarn run start:dev
+**Create Booking**: POST `/booking`
 
-# production mode
-$ yarn run start:prod
-```
+**Retrieve Bookings**: GET `/bookings?userIdentifier=<email or phone number>`
 
-## Test
+### UML Diagram
 
-```bash
-# unit tests
-$ yarn run test
+![image](https://github.com/DivyanshSareen/seat-booking-api/assets/59335572/d55603ea-cb02-4718-a82b-1ac6c9514ddc)
 
-# e2e tests
-$ yarn run test:e2e
 
-# test coverage
-$ yarn run test:cov
-```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
