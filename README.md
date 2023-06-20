@@ -37,7 +37,8 @@ available, use normal_price
 
 ### UML Diagram
 
-![image](https://github.com/DivyanshSareen/seat-booking-api/assets/59335572/d55603ea-cb02-4718-a82b-1ac6c9514ddc)
+![image](https://github.com/DivyanshSareen/seat-booking-api/assets/59335572/e6103c74-4d8b-4cab-8952-09fe4e56cec3)
+
 
 
 
